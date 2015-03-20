@@ -225,7 +225,7 @@ public class RqlQuery {
     }
 
     public OrderBy orderBy(List<Object> fields, String index) {
-        return orderBy(index, fields);
+        return orderBy(index, fields.toArray());
     }
 
     public OrderBy orderBy(Object... fields) {
@@ -234,6 +234,10 @@ public class RqlQuery {
 
     public OrderBy orderByIndex(String index) {
         return orderBy(index, null);
+    }
+
+    public OrderBy orderByIndex(Object index) {
+      return new OrderBy(this, new Arguments(), new OptionalArguments().with("index", index));
     }
 
     public OrderBy orderByField(String field) {
