@@ -6,6 +6,7 @@ import com.rethinkdb.RethinkDBConnection;
 import com.rethinkdb.ast.helper.Arguments;
 import com.rethinkdb.ast.helper.OptionalArguments;
 import com.rethinkdb.ast.query.gen.Date;
+import com.rethinkdb.model.Bound;
 import com.rethinkdb.model.Durability;
 import com.rethinkdb.model.RqlFunction;
 import com.rethinkdb.ast.query.gen.*;
@@ -267,6 +268,17 @@ public class RqlQuery {
     public Filter filter(RqlFunction function) { return new Filter(this, new Arguments(new Func(function)), null); }
 
     public Filter filter(RqlQuery query) { return new Filter(this, new Arguments(query), null); }
+
+    public Between between(String lowerKey, String upperKey) {
+      return new Between(this, new Arguments(lowerKey, upperKey), null);
+    }
+
+    public Between between(String lowerKey, String upperKey, String index, Bound leftBound, Bound rightBound) {
+      return new Between(this, new Arguments(lowerKey, upperKey),
+          new OptionalArguments().with("index", index)
+                       .with("left_bound", leftBound.name())
+                       .with("right_bound", rightBound.name()));
+    }
 
     public Table table(String tableName) {
         return new Table(this, new Arguments(tableName), null);
