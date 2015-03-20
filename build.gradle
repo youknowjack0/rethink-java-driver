@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+version = '0.4'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://maven.restlet.org'
+    }
+}
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+configurations {
+    // Prevents slf4j impl jar conflicts
+    all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+}
+
+dependencies {
+    compile 'com.google.protobuf:protobuf-java:2.5.0'
+    compile 'org.slf4j:slf4j-api:1.6.6'
+    compile 'com.google.guava:guava:17.0'
+    compile 'ch.qos.logback:logback-classic:1.0.10'
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.easytesting:fest-assert:1.4'
+}
+
+jar {
+
+    manifest {
+        attributes(
+            'Implementation-Title': 'rethink-java-driver',
+            'Implementation-Version': 0.4,
+            'Main-Class': 'com.rethinkdb.RethinkDB'
+        )
+    }
+
+}
+

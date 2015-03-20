@@ -1,6 +1,6 @@
 # NOTICE
 
-*I am not actively using rethink anymore and have little time to maintain the project. It may be possible that time opens up in the near future, but if anyone is eager to take this over / help out they are welcome to contact me.*
+This driver is not officially supported by Dropbox.  It is used solely by the Analytics Product team, and contains only minor bugfixes/improvements needed for our use.
 
 
 ## Introduction
@@ -74,6 +74,7 @@ See API Documentation and more examples here: [http://npiv.github.io/rethink-jav
 
 ### Apache License 2.0
 ```
+Copyright [2015] [Dropbox]
 Copyright [2014] [Nick Verlinde]
 
 Licensed under the Apache License, Version 2.0 (the "License");
