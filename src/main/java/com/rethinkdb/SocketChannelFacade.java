@@ -6,6 +6,7 @@ import com.rethinkdb.util.ThreadUtil;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.SocketChannel;
@@ -17,6 +18,7 @@ public class SocketChannelFacade {
         try {
             socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(true);
+            socketChannel.setOption(StandardSocketOptions.TCP_NODELAY, true);
             socketChannel.connect(new InetSocketAddress(hostname, port));
         } catch (IOException e) {
             throw new RethinkDBException(e);
