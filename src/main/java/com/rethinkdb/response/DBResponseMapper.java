@@ -129,6 +129,8 @@ public class DBResponseMapper {
      */
     public static <T> T populateObject(T to, Map<String,Object> from) {
         for (Field field : to.getClass().getDeclaredFields()) {
+            if (field.isSynthetic()) continue;
+
             try {
                 field.setAccessible(true);
 
