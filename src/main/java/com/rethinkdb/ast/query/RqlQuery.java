@@ -345,7 +345,7 @@ public class RqlQuery {
     }
 
     public Delete delete(Durability durability, Boolean withVals) {
-        return new Delete(this, null, new OptionalArguments().with("durability", durability).with("with_vals", withVals));
+        return new Delete(this, null, new OptionalArguments().with("durability", durability != null ? durability.toString() : null).with("with_vals", withVals));
     }
 
     public Count count() {
