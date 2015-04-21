@@ -15,7 +15,7 @@ public class ConcatMap extends RqlQuery {
     }
 
     public ConcatMap(RqlQuery prev, List<Object> args, Map<String, Object> optionalArgs) {
-        super(prev, Q2L.Term.TermType.CONCATMAP, args, optionalArgs);
+        super(prev, Q2L.Term.TermType.CONCAT_MAP, args, optionalArgs);
     }
 
     @Override

@@ -27,7 +27,7 @@ public abstract class AbstractITTest {
         try {
             r.dbCreate(dbName).run(con);
             con.use(dbName);
-            r.db(dbName).tableCreate(tableName,null, Durability.hard, null).run(con);
+            r.db(dbName).tableCreate(tableName, null, Durability.hard).run(con);
         } catch (RethinkDBException ex) {
             ex.printStackTrace();
         }

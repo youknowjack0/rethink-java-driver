@@ -22,7 +22,7 @@ public class ManipulatingTablesIT extends AbstractITTest {
     public void createTableWithPrimaryKey() {
         String customPKTable = "customPKTable";
 
-        r.db(dbName).tableCreate(customPKTable, "myId", null, null).run(con);
+        r.db(dbName).tableCreate(customPKTable, "myId", null).run(con);
         DMLResult res1 = r.db(dbName).table(customPKTable).insert(new MapObject().with("myId", 1)).run(con);
         DMLResult res2 = r.db(dbName).table(customPKTable).insert(new MapObject().with("myId", 1)).run(con);
 

@@ -1,12 +1,13 @@
 package com.rethinkdb.ast.query.gen;
 
+import java.util.List;
+import java.util.Map;
+
 import com.rethinkdb.ast.helper.Arguments;
 import com.rethinkdb.ast.helper.OptionalArguments;
 import com.rethinkdb.ast.query.RqlQuery;
 import com.rethinkdb.model.Durability;
 import com.rethinkdb.proto.Q2L;
-
-import java.util.List;
 
 // extends RqlTopLevelQuery
 public class DB extends RqlQuery {
@@ -16,7 +17,7 @@ public class DB extends RqlQuery {
     }
 
     public TableCreate tableCreate(String tableName) {
-        return tableCreate(tableName, null, null, null);
+        return tableCreate(tableName, null, null);
     }
 
     /**
@@ -25,13 +26,26 @@ public class DB extends RqlQuery {
      * @param tableName  tableName (mandatory)
      * @param primaryKey primary key (leave null for default)
      * @param durability durability  (leave null for default)
-     * @param datacenter datacenter  (leave null for default)
      */
-    public TableCreate tableCreate(String tableName, String primaryKey, Durability durability, String datacenter) {
+    public TableCreate tableCreate(String tableName, String primaryKey, Durability durability) {
+        return tableCreate(tableName, primaryKey, durability, null, null);
+    }
+
+    /**
+     * Create table with tableName, primaryKey, Durability, replica mapping, and primary replica tag on a specific dataCenter.
+     *
+     * @param tableName  tableName (mandatory)
+     * @param primaryKey primary key (leave null for default)
+     * @param durability durability  (leave null for default)
+     * @param replicas replicas (leave null for default)
+     * @param primaryReplicaTag primaryReplicaTag  (leave null for default)
+     */
+    public TableCreate tableCreate(String tableName, String primaryKey, Durability durability, Map<String, Integer> replicas, String primaryReplicaTag) {
         OptionalArguments optionalArguments = new OptionalArguments()
-                .with("datacenter", datacenter)
                 .with("primary_key", primaryKey)
-                .with("durability", durability == null ? null : durability.toString());
+                .with("durability", durability == null ? null : durability.toString())
+                .with("replicas", replicas)
+                .with("primary_replica_tag", primaryReplicaTag);
 
         return new TableCreate(this, new Arguments(tableName), optionalArguments);
     }

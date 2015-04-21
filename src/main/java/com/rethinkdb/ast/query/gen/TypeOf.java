@@ -14,7 +14,7 @@ public class TypeOf extends RqlQuery {
     }
 
     public TypeOf(RqlQuery prev, List<Object> args, Map<String, Object> optionalArgs) {
-        super(prev, Q2L.Term.TermType.TYPEOF, args, optionalArgs);
+        super(prev, Q2L.Term.TermType.TYPE_OF, args, optionalArgs);
     }
 }
         

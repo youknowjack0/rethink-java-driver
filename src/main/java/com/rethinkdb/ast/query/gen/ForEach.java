@@ -14,7 +14,7 @@ public class ForEach extends RqlQuery {
     }
 
     public ForEach(RqlQuery prev, List<Object> args, Map<String, Object> optionalArgs) {
-        super(prev, Q2L.Term.TermType.FOREACH, args, optionalArgs);
+        super(prev, Q2L.Term.TermType.FOR_EACH, args, optionalArgs);
     }
 }
         

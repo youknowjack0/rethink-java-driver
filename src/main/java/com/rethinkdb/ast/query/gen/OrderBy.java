@@ -15,7 +15,7 @@ public class OrderBy extends RqlQuery {
     }
 
     public OrderBy(RqlQuery prev, List<Object> args, Map<String, Object> optionalArgs) {
-        super(prev, Q2L.Term.TermType.ORDERBY, args, optionalArgs);
+        super(prev, Q2L.Term.TermType.ORDER_BY, args, optionalArgs);
     }
 
     @Override
