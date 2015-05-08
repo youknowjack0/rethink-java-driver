@@ -1,8 +1,3 @@
-# NOTICE
-
-This driver is not officially supported by Dropbox.  It is used solely by the Analytics Product team, and contains only minor bugfixes/improvements needed for our use.
-
-
 ## Introduction
 
 [Full Documentation here](http://npiv.github.io/rethink-java-doc/html/)
